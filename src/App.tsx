@@ -18,9 +18,9 @@ function App () {
   useEffect(() => {
     if (gtmInitialised) {
       event({
-        category: 'Xmas2023 system new',
-        action: 'Xmas2023 Categories',
-        label: 'Xmas2023 Categories loaded'
+        category: 'NewYear2024 system new',
+        action: 'NewYear2024 Categories',
+        label: 'NewYear2024 Categories loaded'
       });
     }
   // eslint-disable-next-line
@@ -32,8 +32,8 @@ function App () {
         position={'fixed'}
         height={`${viewHeight}px`}
         width={`${viewWidth}px`}
-        backgroundColor={'red'}
-        zIndex={100}
+        backgroundColor={'orange'}
+        zIndex={10000}
         display={isMobile && landscape ? 'flex' : 'none'}
         justifyContent={'center'}
         alignItems={'center'}
@@ -41,6 +41,7 @@ function App () {
         <Box
           fontSize={'2em'}
           color={'white'}
+          textAlign={'center'}
         >
           Please flip your mobile to portrait mode
         </Box>

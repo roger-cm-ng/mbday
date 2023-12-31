@@ -13,16 +13,20 @@ import { observer } from 'mobx-react';
 import {
   AnimationEnum, StageEnum
 } from '../stage/stage.types';
+import { gameConstants } from '../../phaser/objects/game.constants';
 
+const {
+  width, height
+} = gameConstants;
 const config = {
   type: Phaser.AUTO,
-  backgroundColor: '#ffffff',
+  backgroundColor: '#ffffed',
   scale: {
     parent: 'phaser-game',
     mode: Phaser.Scale.FIT,
     autoCenter: Phaser.Scale.CENTER_BOTH,
-    width: 720,
-    height: 1280
+    width,
+    height
   },
   scene: [PreloadScene, MainScene],
   physics: {
@@ -46,16 +50,15 @@ export const PhaserGame: FC = observer(() => {
   }, []);
 
   useEffect(() => {
-    if (gameStore.score === 10) {
-      stageStore.setAnimation(AnimationEnum.UNSTUCK);
-      stageStore.setCurrentStage(StageEnum.CHIMNEY);
-    }
-    if (gameStore.gameOver) {
-      stageStore.setAnimation(AnimationEnum.STUCK);
-      stageStore.setCurrentStage(StageEnum.CHIMNEY);
+    if (gameStore.score === 3) {
+      stageStore.setAnimation(AnimationEnum.SUCCESS);
+      stageStore.setCurrentStage(StageEnum.OUTRO);
+    } else if (gameStore.fireworkIndex === 3) {
+      stageStore.setAnimation(AnimationEnum.FAIL);
+      stageStore.setCurrentStage(StageEnum.OUTRO);
     }
   // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, [gameStore.score, gameStore.gameOver]);
+  }, [gameStore.score, gameStore.fireworkIndex]);
 
   return (
     <>
@@ -65,10 +68,11 @@ export const PhaserGame: FC = observer(() => {
         right={'0.6em'}
         top={'0.6em'}
         fontSize={'1.6em'}
+        fontWeight={700}
       >
         SCORE
         <span
-          style={{ color: 'red' }}
+          style={{ color: 'orange' }}
         >
           {` ${gameStore.score}`}
         </span>

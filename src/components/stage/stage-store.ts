@@ -7,7 +7,7 @@ import {
 
 export class StageStore {
   currentStage: number = StageEnum.INTRO;
-  animation: string = AnimationEnum.STUCK;
+  animation: string = AnimationEnum.SUCCESS;
 
   constructor () {
     makeAutoObservable(this, {

@@ -1,23 +1,25 @@
 import {
   action, makeAutoObservable, observable
 } from 'mobx';
+import { fireworkImgs } from './game.constants';
 
 export class GameStore {
-  gameOver: boolean = false;
   score: number = 0;
+  totalAmmos: number = 3;
+  currentAmmo: number = -1;
+  fireworkIndex: number = 0;
 
   constructor () {
     makeAutoObservable(this, {
-      gameOver: observable,
       score: observable,
-      setGameOver: action,
+      totalAmmos: observable,
+      currentAmmo: observable,
+      fireworkIndex: observable,
       setScore: action,
-      resetGame: action
+      resetGame: action,
+      setCurrentAmmo: action,
+      setFireworkIndex: action
     });
-  }
-
-  setGameOver (isGameOver: boolean) {
-    this.gameOver = isGameOver;
   }
 
   setScore (score: number) {
@@ -25,7 +27,20 @@ export class GameStore {
   }
 
   resetGame () {
-    this.gameOver = false;
     this.score = 0;
+    this.currentAmmo = -1;
+    this.fireworkIndex = 0;
+  }
+
+  setCurrentAmmo (currentAmmo: number) {
+    if (currentAmmo < this.totalAmmos) {
+      this.currentAmmo = currentAmmo;
+    }
+  }
+
+  setFireworkIndex (fireworkIndex: number) {
+    if (fireworkIndex <= fireworkImgs.length) {
+      this.fireworkIndex = fireworkIndex;
+    }
   }
 }

@@ -3,10 +3,10 @@
 export enum StageEnum {
   INTRO,
   GAME,
-  CHIMNEY
+  OUTRO
 }
 
 export enum AnimationEnum {
-  STUCK = 'stuck',
-  UNSTUCK = 'unstuck'
+  SUCCESS = 'success',
+  FAIL = 'fail'
 }

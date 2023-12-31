@@ -3,7 +3,7 @@ import { useStore } from '../../stores';
 import { Intro } from '../intro/intro';
 import { PhaserGame } from '../phaser-game/phaser-game';
 import { StageEnum } from './stage.types';
-import { Chimney } from '../chimney/chimney';
+import { Outro } from '../outro/outro';
 
 export const Stage = observer(() => {
   const { currentStage } = useStore().stageStore;
@@ -15,8 +15,8 @@ export const Stage = observer(() => {
     case StageEnum.GAME: {
       return <PhaserGame />;
     }
-    case StageEnum.CHIMNEY: {
-      return <Chimney />;
+    case StageEnum.OUTRO: {
+      return <Outro />;
     }
     }
   };
