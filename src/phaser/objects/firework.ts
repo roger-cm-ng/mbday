@@ -41,18 +41,20 @@ export default class Firework extends Phaser.Physics.Arcade.Sprite {
       scene.physics.add.collider(this, ammo, () => {
         this.setVelocity(0, -300);
         ammo.destroy();
+        this.removeCollidesWith(1);
         store.gameStore.setFireworkIndex(store.gameStore.fireworkIndex + 1);
         store.gameStore.setScore(store.gameStore.score + 1);
       });
     });
 
     autorun(() => {
-      console.log(index, img, side, store.gameStore.fireworkIndex);
       if (this.index === store.gameStore.fireworkIndex) {
+        const velX = store.gameStore.fireworkIndex === 0 ? 180 : randVelX();
+
         if (this.side === Side.LEFT) {
-          this.setVelocityX(randVelX());
+          this.setVelocityX(velX);
         } else {
-          this.setVelocityX(-randVelX());
+          this.setVelocityX(-velX);
         }
       }
     });
