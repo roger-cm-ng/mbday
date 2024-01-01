@@ -118,12 +118,10 @@ export default class MainScene extends Phaser.Scene {
       this.ship.setX(this.ship.x - 5);
     }
     if (this.rightBtnDown) {
-      this.ship.setX(this.ship.x + 5);
-      console.log('right btn down', this.rightBtnDown);
+      this.ship.setX(this.ship.x + 8);
     }
     if (this.leftBtnDown) {
-      this.ship.setX(this.ship.x - 5);
-      console.log('left btn down', this.leftBtnDown);
+      this.ship.setX(this.ship.x - 8);
     }
   }
 }
