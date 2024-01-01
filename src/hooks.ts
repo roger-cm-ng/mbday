@@ -36,8 +36,7 @@ export const useGoogleAnalytics = () => {
 
   useEffect(() => {
     if (!window.location.href.includes('localhost')) {
-      console.log('gtm initialised');
-      initialize('GTM-MRJWJ4KM');
+      initialize('GTM-NPD6B7KT');
       setInitialized(true);
     }
   }, []);
