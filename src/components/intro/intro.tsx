@@ -97,7 +97,7 @@ export const Intro = observer(() => {
             <Box
               marginBottom={'0.6em'}
             >
-              Another year and I can't believe you've grown so much in a year. Anyway, I must say you've done quite well last year, got into the math acceleration. School football, we all know you are the pivot of the team, without you, the team wouldn't be playing in the final. This end of the year holiday, I think it's your most productive, you've assembled a gaming PC which is not easy. 
+              Another year and I can't believe you've grown so much in a year. Anyway, I must say you've done quite well last year, got into the math acceleration. School football, we all know you are the pivot of the team, without you, the team wouldn't be playing in the final. This final term holiday, I think it's your most productive, you've assembled a gaming PC which is not easy. 
             </Box>
             <Box>
               May you be successful academically and in your sport endeavors this year. Enjoy your remaining holidays and have a very happy birthday
