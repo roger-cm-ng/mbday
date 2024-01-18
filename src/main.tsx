@@ -5,10 +5,10 @@ import {
   ChakraProvider, extendTheme
 } from '@chakra-ui/react';
 import store, { StoreContext } from './stores';
-import '@fontsource/silkscreen';
+import '@fontsource/satisfy';
 
 const theme = extendTheme({
-  fonts: { body: '\'silkscreen\', sans-serif' },
+  fonts: { body: '\'Satisfy\', sans-serif' },
   styles: {
     global: {
       html: { overflow: 'hidden' },

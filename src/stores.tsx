@@ -3,11 +3,9 @@ import {
   createContext, useContext
 } from 'react';
 
-import { GameStore } from './phaser/objects/game-store';
 import { StageStore } from './components/stage/stage-store';
 
 const store = {
-  gameStore: new GameStore(),
   stageStore: new StageStore()
 };
 

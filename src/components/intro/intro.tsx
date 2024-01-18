@@ -1,115 +1,101 @@
 import {
-  Box, Button, Image, Modal,
+  Box, Fade, Button, Modal,
   ModalOverlay, ModalContent, ModalHeader,
   ModalCloseButton, ModalBody, ModalFooter,
   useDisclosure
 } from '@chakra-ui/react';
-import { useStore } from '../../stores';
-import { StageEnum } from '../stage/stage.types';
-import bridge from '../outro/bridge.svg';
+import {
+  useEffect, useState, useRef
+} from 'react';
+import { observer } from 'mobx-react';
+import fox from './fox.json';
+import Lottie, { LottieRef } from 'lottie-react';
 
-export const Intro = () => {
-  const { stageStore } = useStore();
+export const Intro = observer(() => {
+  const [showText, setShowText] = useState(false);
+  const lottieRef:LottieRef = useRef(null);
   const {
     isOpen, onOpen, onClose
   } = useDisclosure();
 
+  useEffect(() => {
+    setTimeout(() => {
+      setShowText(true);
+    }, 2000);
+  // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, []);
+
   return (
     <Box
-      backgroundColor={'#ffffed'}
-      width={'100%'}
+      backgroundColor={'#001c38'}
       height={'100%'}
+      p={'4em 2em'}
     >
-      <Box
-        position={'absolute'}
-        top={'14%'}
-        width={'100%'}
-        zIndex={100}
-      >
+      <Fade in={showText}>
         <Box
-          color={'orange'}
-          fontSize={'3em'}
-          textAlign={'center'}
-          lineHeight={'1em'}
-          fontWeight={'bold'}
+          width={'100%'}
+          zIndex={1000}
         >
-          FIREWORK INVADERS
+          <Box
+            color={'white'}
+            fontSize={'2.8em'}
+            width={'100%'}
+            textAlign={'center'}
+            lineHeight={'1em'}
+          >
+            Happy birthday, mate
+          </Box>
         </Box>
+      </Fade>
+      <Box>
+        <Lottie
+          lottieRef={lottieRef}
+          animationData={fox}
+          loop={true}
+        />
       </Box>
       <Box
-        position={'absolute'}
-        bottom={'30%'}
         width={'100%'}
         display={'flex'}
         justifyContent={'center'}
-        zIndex={110}
       >
         <Button
-          onClick={() => stageStore.setCurrentStage(StageEnum.GAME)}
+          onClick={onOpen}
           colorScheme='orange'
           size={'lg'}
           fontSize={'1.6em'}
+          fontFamily={'verdana'}
           padding={'1em'}
-          letterSpacing={'0.1em'}
           border={'2px solid white'}
         >
-          PLAY
+          message
         </Button>
       </Box>
-      <Box
-        position={'absolute'}
-        bottom={'20%'}
-        width={'100%'}
-        display={'flex'}
-        justifyContent={'center'}
-        zIndex={120}
-      >
-        <Button onClick={onOpen}>Instructions</Button>
-
-        <Modal isOpen={isOpen} onClose={onClose}>
-          <ModalOverlay />
-          <ModalContent>
-            <ModalHeader>Instructions</ModalHeader>
-            <ModalCloseButton />
-            <ModalBody
-              fontFamily={'verdana'}
+      <Modal isOpen={isOpen} onClose={onClose} scrollBehavior={'inside'}>
+        <ModalOverlay />
+        <ModalContent>
+          <ModalHeader>Happy birthday, mate</ModalHeader>
+          <ModalCloseButton />
+          <ModalBody
+            fontFamily={'verdana'}
+          >
+            <Box
+              marginBottom={'0.6em'}
             >
-              <Box
-                marginBottom={'0.6em'}
-              >
-                You have to shoot down all 3 Firework Invaders to save the New Year's eve event
-              </Box>
-              <Box
-                marginBottom={'0.6em'}
-                fontWeight={'bold'}
-              >
-                For keyboard user:
-              </Box>
-              <Box
-                margin={'0 0 0.2em 0.4em'}
-              >
-                Press the left and right arrow keys to move left and right
-              </Box>
-              <Box
-                margin={'0 0 0.1em 0.4em'}
-              >
-                Press the spacebar to shoot
-              </Box>
-            </ModalBody>
+              Another year and I can't believe you've grown so much in a year. Anyway, I must say you've done quite well last year, got into the math acceleration. School football, we all know you are the pivot of the team, without you, the team wouldn't be playing in the final. This end of the year holiday, I think it's your most productive, you've assembled a gaming PC which is not easy. 
+            </Box>
+            <Box>
+              May you be successful academically and in your sport endeavors this year. Enjoy your remaining holidays and have a very happy birthday
+            </Box>
+          </ModalBody>
 
-            <ModalFooter>
-              <Button colorScheme='orange' mr={3} onClick={onClose}>
-                Close
-              </Button>
-            </ModalFooter>
-          </ModalContent>
-        </Modal>
-      </Box>
-      <Image
-        src={bridge}
-        position={'absolute'}
-        bottom={0}
-      />
+          <ModalFooter>
+            <Button colorScheme='orange' mr={3} onClick={onClose} fontFamily={'verdana'}>
+              close
+            </Button>
+          </ModalFooter>
+        </ModalContent>
+      </Modal>
     </Box>
   );
-};
+});
