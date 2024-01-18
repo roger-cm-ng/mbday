@@ -29,12 +29,13 @@ export const Intro = observer(() => {
     <Box
       backgroundColor={'#001c38'}
       height={'100%'}
-      p={'4em 2em'}
+      p={'2em 2em 0'}
     >
       <Fade in={showText}>
         <Box
           width={'100%'}
           zIndex={1000}
+          marginBottom={'10%'}
         >
           <Box
             color={'white'}
@@ -46,30 +47,44 @@ export const Intro = observer(() => {
             Happy birthday, mate
           </Box>
         </Box>
+        <Box
+          width={'100%'}
+          display={'flex'}
+          justifyContent={'center'}
+          marginBottom={'10%'}
+          zIndex={100}
+          position={'relative'}
+        >
+          <Button
+            onClick={onOpen}
+            colorScheme='orange'
+            size={'lg'}
+            fontSize={'1.6em'}
+            fontFamily={'verdana'}
+            padding={'1em'}
+            border={'2px solid white'}
+          >
+            message
+          </Button>
+        </Box>
       </Fade>
-      <Box>
+      <Box
+        width={'100%'}
+        height={'68%'}
+        position={'relative'}
+        zIndex={0}
+      >
         <Lottie
+          style={{
+            position: 'absolute',
+            width: '160%',
+            left: '-30%',
+            top: '-20%'
+          }}
           lottieRef={lottieRef}
           animationData={fox}
           loop={true}
         />
-      </Box>
-      <Box
-        width={'100%'}
-        display={'flex'}
-        justifyContent={'center'}
-      >
-        <Button
-          onClick={onOpen}
-          colorScheme='orange'
-          size={'lg'}
-          fontSize={'1.6em'}
-          fontFamily={'verdana'}
-          padding={'1em'}
-          border={'2px solid white'}
-        >
-          message
-        </Button>
       </Box>
       <Modal isOpen={isOpen} onClose={onClose} scrollBehavior={'inside'}>
         <ModalOverlay />
